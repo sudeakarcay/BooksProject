@@ -5,11 +5,13 @@ using BLL.Services.Bases;
 using BLL.Models;
 using BLL.DAL;
 using BLL.Services;
+using Microsoft.AspNetCore.Authorization;
 
 // Generated from Custom Template.
 
 namespace MVCBook.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class BooksController : MvcController
     {
         // Service injections:

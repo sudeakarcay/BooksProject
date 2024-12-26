@@ -15,7 +15,6 @@ using System.Security.Claims;
 
 namespace MVC.Controllers
 {
-    //[Authorize(Roles = "Admin")]
     public class UsersController : MvcController
     {
         // Service injections:

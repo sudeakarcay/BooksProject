@@ -10,7 +10,8 @@ using Microsoft.AspNetCore.Mvc;
 // Generated from Custom Template.
 
 namespace MVC.Controllers
-{ 
+{
+    [Authorize(Roles = "Admin")]
     public class RolesController : MvcController
     {
         // Service injections:

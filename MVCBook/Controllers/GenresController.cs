@@ -12,6 +12,7 @@ using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Sha
 
 namespace MVCBook.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class GenresController : MvcController
     {
         // Service injections:

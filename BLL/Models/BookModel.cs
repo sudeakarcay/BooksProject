@@ -15,7 +15,7 @@ namespace BLL.Models
         [DisplayName("Publish Date")]
         public string PublishDate => Record.PublishDate.ToString("MM/dd/yyyy");
 
-        public decimal Price => Record.Price;
+        public string Price => Record.Price.ToString("C2");
 
         [DisplayName("Top Seller")]
         public string IsTopSeller => Record.IsTopSeller ? "Top Seller" : "Not Top Seller";
