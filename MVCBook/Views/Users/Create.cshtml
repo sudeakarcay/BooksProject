@@ -1,0 +1,57 @@
+﻿@using BLL.Models
+@model UserModel
+
+@* Enhanced User Create Form *@
+
+@{
+    ViewData["Title"] = "User Create";
+}
+
+<div class="container py-5">
+    <div class="card shadow-lg border-0 rounded-3">
+        <div class="card-header bg-primary text-white text-center">
+            <h3>@ViewData["Title"]</h3>
+        </div>
+        <div class="card-body p-4">
+            @if (TempData["Message"] is not null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    @TempData["Message"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+
+            <form asp-action="Create" autocomplete="off">
+                @Html.AntiForgeryToken()
+
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger d-none" role="alert"></div>
+
+                <div class="mb-4">
+                    <label asp-for="UserName" class="form-label fw-bold">Username</label>
+                    <input asp-for="Record.UserName" class="form-control" placeholder="Enter username" />
+                    <span asp-validation-for="Record.UserName" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-4">
+                    <label asp-for="Password" class="form-label fw-bold">Password</label>
+                    <input asp-for="Record.Password" type="password" class="form-control" placeholder="Enter password" />
+                    <span asp-validation-for="Record.Password" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-4">
+                    <label asp-for="Role" class="form-label fw-bold">Role</label>
+                    <select asp-for="Record.RoleId" class="form-select" asp-items="ViewBag.RoleId">
+                        <option value="">-- Select --</option>
+                    </select>
+                    <span asp-validation-for="Record.RoleId" class="text-danger small"></span> 
+                </div>
+
+                <div class="d-flex justify-content-end gap-2">
+                    <button type="submit" class="btn btn-primary px-4">Save</button>
+                    <button type="reset" class="btn btn-secondary px-4">Reset</button>
+                    <a asp-action="Index" class="btn btn-outline-primary px-4">Back to List</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

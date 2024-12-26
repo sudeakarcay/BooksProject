@@ -1,0 +1,59 @@
+﻿@using BLL.Models
+@model RoleModel
+
+@* Generated from Custom Template. *@
+@* Model namespace using directive should be added to _ViewImports.cshtml. *@
+
+@{
+    var containerDivClass = "container py-4";
+    var formGroupClass = "form-group mb-4";
+    var labelClass = "col-form-label fw-bold";
+    var inputClass = "form-control";
+    var validationClass = "text-danger small";
+    var buttonGroupClass = "btn-group mt-3";
+}
+
+@{
+    ViewData["Title"] = "Role Create";
+}
+
+<div class="@containerDivClass">
+    <h3 class="mb-3 text-primary">@ViewData["Title"]</h3>
+    <hr class="mb-4" />
+
+    @if (TempData["Message"] is not null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @TempData["Message"]
+        </div>
+    }
+
+    <form asp-action="Create" autocomplete="off" class="shadow-sm p-4 bg-white rounded">
+        @Html.AntiForgeryToken()
+
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert" style="display:none;"></div>
+
+        <div class="@formGroupClass">
+            <label asp-for="RoleName" class="@labelClass"></label>
+            <input asp-for="Record.Name" class="@inputClass" placeholder="Enter role name" />
+            <span asp-validation-for="Record.Name" class="@validationClass"></span>
+        </div>
+
+        @* Uncomment and update for many-to-many relationships *@
+        @*
+        <div class="@formGroupClass">
+        <label asp-for="{Entity}Ids" class="@labelClass">Select Related Entities</label>
+        <select multiple asp-for="{Entity}Ids" class="form-select">
+        @Html.DropDownListFor(model => model.{Entity}Ids, (IEnumerable<SelectListItem>)ViewBag.{Entity}Ids, "Select...")
+        </select>
+        <span asp-validation-for="{Entity}Ids" class="@validationClass"></span>
+        </div>
+        *@
+
+        <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary me-2">Save</button>
+            <button type="reset" class="btn btn-secondary me-2">Reset</button>
+            <a asp-action="Index" class="btn btn-outline-primary">Back to List</a>
+        </div>
+    </form>
+</div>
